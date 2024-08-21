@@ -1,7 +1,8 @@
-const FormSplitBill = () => {
+/* eslint-disable react/prop-types */
+const FormSplitBill = ({ selectedFriend }) => {
   return (
     <form action="" className="form-split-bill">
-      <h2>Patungan Bareng si x</h2>
+      <h2>Patungan Bareng si {selectedFriend.name}</h2>
 
       <label htmlFor="">💵Total Tagihan</label>
       <input type="text" />
@@ -9,13 +10,13 @@ const FormSplitBill = () => {
       <label htmlFor="">🙋‍♂️Tagihan Kamu</label>
       <input type="text" />
 
-      <label htmlFor="">🙋Tagihan x</label>
+      <label htmlFor="">🙋Tagihan {selectedFriend.name}</label>
       <input type="text" name="" id="" disabled />
 
       <label htmlFor="">🤑Ditalangin sama</label>
       <select name="" id="">
         <option value="user">Kamu</option>
-        <option value="friend">x</option>
+        <option value="friend">{selectedFriend.name}</option>
       </select>
 
       <button className="button">Tambah</button>

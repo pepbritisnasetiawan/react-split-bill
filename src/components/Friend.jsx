@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
-const Friend = ({ friend, onSelected }) => {
+const Friend = ({ friend, onSelected, selectedFriend }) => {
+  const isSelected = selectedFriend?.id === friend.id;
+
   return (
-    <li>
+    <li className={isSelected ? 'selected' : ''}>
       <img src={friend.image} alt={friend.name} />
       <h3>{friend.name}</h3>
       {friend.balance < 0 && (
@@ -16,7 +18,7 @@ const Friend = ({ friend, onSelected }) => {
       )}
       {friend.balance === 0 && <p>Kamu dan {friend.name} tidak ada hutang</p>}
       <button className="button" onClick={() => onSelected(friend)}>
-        Pilih
+        {isSelected ? 'Tutup' : 'Pilih'}
       </button>
     </li>
   );
