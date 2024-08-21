@@ -26,17 +26,22 @@ const initialFriends = [
 ];
 
 function App() {
+  const [friends, setFriends] = useState(initialFriends);
   const [showAddFriend, setShowAddFriend] = useState(false);
-  
+
   const handleShowAddFriend = () => {
-    setShowAddFriend((showAddFriend) => !showAddFriend)
-  }
+    setShowAddFriend((showAddFriend) => !showAddFriend);
+  };
+
+  const handleAddFriends = (friend) => {
+    setFriends((friends) => [...friends, friend]);
+  };
 
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendList friends={initialFriends} />
-        {showAddFriend && <FormAddFriend />}
+        <FriendList friends={friends} />
+        {showAddFriend && <FormAddFriend onAddFriend={handleAddFriends} />}
         <button className="button" onClick={handleShowAddFriend}>
           {showAddFriend ? 'Tutup' : 'Tambah Teman'}
         </button>
