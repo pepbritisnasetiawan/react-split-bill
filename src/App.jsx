@@ -1,4 +1,7 @@
+import { useState } from 'react';
 import './App.css';
+import FormAddFriend from './components/FormAddFriend';
+import FormSplitBill from './components/FormSplitBill';
 import FriendList from './components/FriendList';
 
 const initialFriends = [
@@ -23,11 +26,22 @@ const initialFriends = [
 ];
 
 function App() {
+  const [showAddFriend, setShowAddFriend] = useState(false);
+  
+  const handleShowAddFriend = () => {
+    setShowAddFriend((showAddFriend) => !showAddFriend)
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
         <FriendList friends={initialFriends} />
+        {showAddFriend && <FormAddFriend />}
+        <button className="button" onClick={handleShowAddFriend}>
+          {showAddFriend ? 'Tutup' : 'Tambah Teman'}
+        </button>
       </div>
+      <FormSplitBill />
     </div>
   );
 }
