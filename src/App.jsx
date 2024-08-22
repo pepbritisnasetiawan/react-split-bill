@@ -75,6 +75,7 @@ function App() {
         <FormSplitBill
           selectedFriend={selectedFriend}
           onSplitBill={handleSplitBill}
+          key={selectedFriend.id} // mereset state dengan key
         />
       )}
     </div>
